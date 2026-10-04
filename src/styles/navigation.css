@@ -1,0 +1,86 @@
+/* ---------- navigation ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1400;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.05rem 4vw;border-bottom:1px solid transparent;
+  transition:background .5s var(--ease),border-color .5s,backdrop-filter .5s;
+}
+.nav.scrolled{background:rgba(11,12,15,.78);backdrop-filter:blur(12px);border-bottom-color:var(--hair)}
+.brand{
+  font:500 1rem/1 var(--serif);letter-spacing:.44em;color:var(--ink);
+  display:inline-flex;align-items:center;gap:.7rem;
+}
+.brand::before{content:"";width:5px;height:5px;background:var(--gold);transform:rotate(45deg)}
+.brand:hover{color:var(--gold)}
+.nav-links{display:flex;gap:2.1rem}
+.nav-links a{
+  font:400 .78rem/1 var(--sans);letter-spacing:.32em;color:var(--muted);
+  padding:.4rem 0;position:relative;transition:color .35s;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;
+  background:var(--gold);transform:scaleX(0);transform-origin:0 50%;transition:transform .45s var(--ease);
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-tools{display:flex;align-items:center;gap:1.4rem}
+.icon-btn{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font:400 .78rem/1 var(--sans);letter-spacing:.3em;color:var(--muted);
+  padding:.45rem .2rem;transition:color .35s;
+}
+.icon-btn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.icon-btn .w{opacity:0;transition:opacity .4s}
+.icon-btn .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:0;transition:opacity .4s}
+.icon-btn.on{color:var(--gold)}
+.icon-btn.on .w{opacity:1}
+.icon-btn.on .dot{opacity:1;animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.5);opacity:.4}}
+.menu-ic{display:inline-flex;flex-direction:column;gap:6px;padding:.4rem .1rem}
+.menu-ic i{width:22px;height:1px;background:var(--ink);transition:transform .45s var(--ease),width .45s}
+.menu-btn:hover .menu-ic i{background:var(--gold)}
+.menu-btn[aria-expanded="true"] .menu-ic i:first-child{transform:translateY(3.5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] .menu-ic i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+body.menu-open{overflow:hidden}
+
+/* ---------- full-screen index (menu) ---------- */
+.menu{
+  position:fixed;inset:0;z-index:1500;
+  background:rgba(8,9,12,.95);backdrop-filter:blur(14px);
+  display:grid;place-items:center;
+  opacity:0;visibility:hidden;
+  transition:opacity .55s var(--ease),visibility .55s;
+}
+.menu.open{opacity:1;visibility:visible}
+.menu-top{position:absolute;top:0;left:0;right:0;height:74px;display:flex;align-items:center;justify-content:space-between;padding:0 4vw}
+.menu-inner{width:min(760px,88vw)}
+.menu-inner a{
+  display:flex;align-items:baseline;gap:1.6rem;padding:1.02rem 0;
+  border-bottom:1px solid var(--hair);
+  font:400 clamp(1.7rem,4.6vw,2.8rem)/1.1 var(--serif);letter-spacing:.04em;color:var(--ink);
+  opacity:0;transform:translateY(16px);
+  transition:opacity .6s var(--ease) calc(var(--i)*.05s),
+             transform .6s var(--ease) calc(var(--i)*.05s),
+             color .35s,padding .45s var(--ease);
+}
+.menu.open .menu-inner a{opacity:1;transform:none}
+.menu-inner a span{font:300 .62rem/1 var(--sans);letter-spacing:.34em;color:var(--gold)}
+.menu-inner a:hover{color:var(--gold);padding-left:.7rem}
+.menu-close{font:400 .62rem/1 var(--sans);letter-spacing:.34em;color:var(--muted);padding:.5rem;transition:color .3s}
+.menu-close:hover{color:var(--gold)}
+
+/* ---------- depth rail (scroll indicator + nav) ---------- */
+.rail{
+  position:fixed;right:26px;top:50%;transform:translateY(-50%);
+  z-index:1300;display:flex;flex-direction:column;gap:20px;align-items:flex-end;
+}
+.rail button{display:flex;align-items:center;gap:12px;padding:.2rem 0}
+.rail em{
+  font:400 .6rem/1 var(--sans);font-style:normal;letter-spacing:.28em;color:var(--muted);
+  opacity:0;transform:translateX(6px);transition:opacity .4s,transform .4s,color .4s;white-space:nowrap;
+}
+.rail i{width:5px;height:5px;border-radius:50%;background:#333845;transition:background .4s,box-shadow .4s;flex:none}
+.rail button:hover em{opacity:1;transform:none}
+.rail button.active em{opacity:1;transform:none;color:var(--gold)}
+.rail button.active i{background:var(--gold);box-shadow:0 0 12px rgba(201,168,108,.9)}
+@media (max-width:1100px){.rail{display:none}}

@@ -1,0 +1,11 @@
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.15s!important;
+  }
+  [data-reveal]{opacity:1!important;transform:none!important;filter:none!important}
+  .hero-title span,.hero-kicker,.hero-tag,.enter-btn{opacity:1;transform:none;filter:none}
+  .plumb{transform:scaleY(1)}
+}

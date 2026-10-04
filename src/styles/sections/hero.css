@@ -1,0 +1,72 @@
+/* ============================ HERO — REALITY ============================ */
+.hero{
+  position:relative;min-height:100vh;min-height:100svh;overflow:hidden;
+  display:grid;place-items:center;text-align:center;
+  background:radial-gradient(115% 85% at 50% 44%,#2b303b 0%,#1b1e26 32%,#111319 62%,#0B0C0F 100%);
+}
+.hero-glow{
+  position:absolute;left:8%;right:8%;top:30%;height:46%;z-index:1;pointer-events:none;
+  background:radial-gradient(50% 55% at 50% 50%,rgba(158,166,182,.30),transparent 72%);
+  filter:blur(34px);
+}
+.fog{
+  position:absolute;left:-15%;width:130%;height:36%;z-index:2;pointer-events:none;
+  background:radial-gradient(50% 50% at 50% 50%,rgba(168,175,192,.26),transparent 70%);
+  filter:blur(42px);mix-blend-mode:screen;
+}
+.fog-a{top:24%;opacity:.55;animation:fogA 26s ease-in-out infinite alternate}
+.fog-b{bottom:14%;opacity:.35;animation:fogB 36s ease-in-out infinite alternate}
+@keyframes fogA{from{transform:translateX(-3.5%) scale(1)}to{transform:translateX(3.5%) scale(1.08)}}
+@keyframes fogB{from{transform:translateX(3%) scale(1.06)}to{transform:translateX(-3%) scale(1)}}
+.sky-slot{position:absolute;left:0;right:0;z-index:3;pointer-events:none}
+.sky-slot svg{position:absolute;inset:0;width:100%;height:100%}
+.sky-slot--top{top:0;height:36vh;transform-origin:50% 0;
+  -webkit-mask-image:linear-gradient(to bottom,#000 38%,transparent 97%);
+          mask-image:linear-gradient(to bottom,#000 38%,transparent 97%);}
+.sky-slot--top svg{transform:scaleY(-1)}
+.sky-slot--bottom{bottom:0;height:40vh;
+  -webkit-mask-image:linear-gradient(to top,#000 38%,transparent 97%);
+          mask-image:linear-gradient(to top,#000 38%,transparent 97%);}
+.hero-inner{position:relative;z-index:5;padding:0 6vw}
+.hero-kicker{margin-bottom:clamp(1.6rem,4vh,2.6rem)}
+.hero-title{
+  display:flex;justify-content:center;gap:.26em;
+  font:500 clamp(2.55rem,12.4vw,10.4rem)/1 var(--serif);
+  color:#EDEAE2;letter-spacing:0;
+  text-shadow:0 0 46px rgba(230,225,210,.16),0 0 120px rgba(230,225,210,.08);
+}
+.hero-title span{
+  display:inline-block;opacity:0;transform:translateY(44px) rotate(2deg);filter:blur(12px);
+  transition:opacity 1.25s var(--ease) calc(var(--i)*.07s + .25s),
+             transform 1.25s var(--ease) calc(var(--i)*.07s + .25s),
+             filter 1.25s var(--ease) calc(var(--i)*.07s + .25s);
+}
+body.loaded .hero-title span{opacity:1;transform:none;filter:blur(0)}
+.plumb{width:1px;height:clamp(88px,15vh,168px);margin:clamp(1.8rem,4.5vh,3.2rem) auto;
+  background:linear-gradient(to bottom,rgba(201,168,108,.92),rgba(201,168,108,.04));
+  transform:scaleY(0);transform-origin:50% 0;transition:transform 1.6s var(--ease) 1.05s;}
+body.loaded .plumb{transform:scaleY(1)}
+.hero-tag{
+  font:500 clamp(.92rem,1.5vw,1.08rem)/1.9 var(--serif);letter-spacing:.3em;color:#CFC9BD;
+  transition:opacity .6s var(--ease),filter .6s var(--ease);
+}
+.hero-tag.swap{opacity:0;filter:blur(6px)}
+.enter-btn{
+  display:inline-block;margin-top:clamp(2rem,5vh,3.4rem);
+  font:400 .68rem/1 var(--sans);letter-spacing:.4em;text-transform:uppercase;color:var(--gold);
+  border:1px solid rgba(201,168,108,.45);padding:1.15em 2.6em 1.05em;
+  transition:background .45s,color .45s,box-shadow .45s,border-color .45s;
+}
+.enter-btn:hover{background:var(--gold);color:#0B0C0F;border-color:var(--gold);box-shadow:0 14px 44px -12px rgba(201,168,108,.4)}
+.hero-kicker,.hero-tag,.enter-btn{opacity:0;transform:translateY(18px);filter:blur(8px);
+  transition:opacity 1.2s var(--ease) var(--d,1.2s),transform 1.2s var(--ease) var(--d,1.2s),filter 1.2s var(--ease) var(--d,1.2s),
+             background .45s,color .45s,box-shadow .45s,border-color .45s}
+body.loaded .hero-kicker,body.loaded .hero-tag,body.loaded .enter-btn{opacity:1;transform:none;filter:blur(0)}
+.scroll-cue{
+  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:5;
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+  font:400 .58rem/1 var(--sans);letter-spacing:.4em;color:var(--muted);
+}
+.cue-line{width:1px;height:44px;background:rgba(232,230,225,.18);position:relative;overflow:hidden}
+.cue-line::after{content:"";position:absolute;left:0;top:-50%;width:100%;height:50%;background:var(--gold);animation:cue 2.4s var(--ease) infinite}
+@keyframes cue{to{top:115%}}

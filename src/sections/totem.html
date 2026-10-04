@@ -1,0 +1,55 @@
+<!-- ==================== 05 · THE TOTEM ==================== -->
+<section id="totem" aria-labelledby="totem-h">
+  <p class="kicker totem-kicker">05 / The Totem</p>
+  <!-- <div class="totem-wall" aria-hidden="true"></div> -->
+  <div class="totem-floor" aria-hidden="true"></div>
+
+  <h2 class="totem-q" id="totem-h" data-reveal>What is real?</h2>
+
+  <div class="totem-stage" id="totemStage" data-reveal style="--d:.15s">
+    <button class="totem-btn" id="totemBtn" aria-label="Spin the totem">
+      <div class="totem-wrap" data-para="4">
+        <svg viewBox="0 0 220 250" aria-hidden="true">
+          <defs>
+            <linearGradient id="brass" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#A8834E"/><stop offset=".28" stop-color="#E2C084"/>
+              <stop offset=".55" stop-color="#C9A86C"/><stop offset=".8" stop-color="#8C6F43"/>
+              <stop offset="1" stop-color="#5C4829"/>
+            </linearGradient>
+            <linearGradient id="brassSide" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#6E5530"/><stop offset="1" stop-color="#3D2F1A"/>
+            </linearGradient>
+            <radialGradient id="spec" cx=".35" cy=".3" r=".8">
+              <stop offset="0" stop-color="#FFF6DF" stop-opacity=".85"/>
+              <stop offset=".4" stop-color="#F4D9A0" stop-opacity=".2"/>
+              <stop offset="1" stop-color="#F4D9A0" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect x="104" y="26" width="12" height="30" rx="4" fill="url(#brassSide)"/>
+          <circle cx="110" cy="27" r="9" fill="url(#brass)"/>
+          <ellipse cx="110" cy="27" rx="4" ry="2.4" fill="#FFF3D6" opacity=".5"/>
+          <path d="M93,57 v9 a17,6 0 0 0 34,0 v-9 Z" fill="url(#brassSide)"/>
+          <ellipse cx="110" cy="57" rx="17" ry="6" fill="url(#brass)"/>
+          <path d="M83,78 v11 a27,9 0 0 0 54,0 v-11 Z" fill="url(#brassSide)"/>
+          <ellipse cx="110" cy="78" rx="27" ry="9" fill="url(#brass)"/>
+          <path d="M72,104 v13 a38,12 0 0 0 76,0 v-13 Z" fill="url(#brassSide)"/>
+          <ellipse cx="110" cy="104" rx="38" ry="12" fill="url(#brass)"/>
+          <path d="M58,134 v13 a52,15 0 0 0 104,0 v-13 Z" fill="url(#brassSide)"/>
+          <ellipse cx="110" cy="134" rx="52" ry="15" fill="url(#brass)"/>
+          <path d="M58,147 Q110,178 162,147 C154,180 130,204 113,219 L110,226 L107,219 C90,204 66,180 58,147 Z" fill="url(#brassSide)"/>
+          <path d="M84,168 Q110,152 136,168 Q124,196 112,208 L108,208 C96,196 90,182 84,168 Z" fill="url(#brass)" opacity=".35"/>
+          <ellipse cx="96" cy="80" rx="9" ry="15" fill="url(#spec)" opacity=".55" transform="rotate(-16 96 80)"/>
+          <ellipse cx="88" cy="136" rx="12" ry="18" fill="url(#spec)" opacity=".5" transform="rotate(-14 88 136)"/>
+          <ellipse cx="104" cy="105" rx="7" ry="8" fill="url(#spec)" opacity=".4"/>
+          <ellipse cx="110" cy="147" rx="52" ry="14" fill="none" stroke="#4A3A20" stroke-opacity=".4"/>
+          <ellipse cx="110" cy="117" rx="38" ry="11" fill="none" stroke="#4A3A20" stroke-opacity=".35"/>
+          <ellipse cx="110" cy="91" rx="27" ry="8" fill="none" stroke="#4A3A20" stroke-opacity=".3"/>
+        </svg>
+      </div>
+      <span class="totem-shine" aria-hidden="true"></span>
+    </button>
+    <div class="totem-shadow" aria-hidden="true"></div>
+  </div>
+
+  <p class="totem-sub" id="totemCap" data-reveal style="--d:.3s">Click the totem — it never stopped spinning</p>
+</section>

@@ -1,0 +1,42 @@
+/* ============================================================
+   INCEPTION — a single-file cinematic descent.
+   Reality → Story → Layers → Architecture → Cast → Totem →
+   Limbo → The Cut. Self-contained: no build step required.
+   ============================================================ */
+
+:root{
+  --bg:#0B0C0F;
+  --panel:#12141A;
+  --slate:#1A1C24;
+  --arch:#2A2E38;
+  --gold:#C9A86C;
+  --ink:#E8E6E1;
+  --muted:#9A968F;
+  --body:#C7C3BA;
+  --hair:rgba(232,230,225,.10);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost','Century Gothic',sans-serif;
+  --ease:cubic-bezier(.22,.8,.24,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font:300 1rem/1.85 var(--sans);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:rgba(201,168,108,.28);color:#fff}
+:focus-visible{outline:1px solid var(--gold);outline-offset:3px}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:#0a0b0e}
+::-webkit-scrollbar-thumb{background:#262a33;border-radius:6px}
+
+.wrap{width:min(1220px,92vw);margin-inline:auto}
+section{scroll-margin-top:70px}

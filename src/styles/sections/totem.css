@@ -1,0 +1,161 @@
+/* ---------- totem ---------- */
+#totem {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 14vh 6vw 12vh;
+  background:
+    radial-gradient(
+      85% 65% at 80% 26%,
+      rgba(96, 96, 104, 0.16),
+      transparent 62%
+    ),
+    linear-gradient(115deg, #08090b 52%, #16161a 74%, #08090b 100%);
+}
+.totem-kicker {
+  position: absolute;
+  top: 96px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.totem-wall {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 42%;
+  height: 62%;
+  pointer-events: none;
+  background: linear-gradient(
+    215deg,
+    rgba(190, 192, 202, 0.12),
+    transparent 58%
+  );
+  border-left: 1px solid rgba(255, 255, 255, 0.04);
+}
+.totem-floor {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 44%;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(232, 230, 225, 0.04),
+    rgba(0, 0, 0, 0.58) 88%
+  );
+}
+.totem-q {
+  font: 500 clamp(2.1rem, 4.6vw, 3.9rem)/1.15 var(--serif);
+  color: var(--ink);
+  z-index: 2;
+}
+.totem-stage {
+  position: relative;
+  z-index: 2;
+  margin-top: clamp(4rem, 11vh, 8rem);
+  width: clamp(160px, 19vw, 215px);
+}
+.totem-btn {
+  display: block;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+.totem-shadow {
+  width: 78%;
+  height: 22px;
+  margin: -6px auto 0;
+  background: radial-gradient(50% 50%, rgba(0, 0, 0, 0.8), transparent 72%);
+  filter: blur(6px);
+  animation: shdw 3.6s ease-in-out infinite;
+}
+@keyframes shdw {
+  0%,
+  100% {
+    transform: scaleX(0.92);
+  }
+  50% {
+    transform: scaleX(1.06);
+  }
+}
+.totem-wrap {
+  transform-origin: 50% 92%;
+  animation: wob 3.6s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes wob {
+  0%,
+  100% {
+    transform: rotate(-3.5deg) translateX(-3px);
+  }
+  50% {
+    transform: rotate(3.5deg) translateX(3px);
+  }
+}
+.totem-stage.spun .totem-wrap {
+  animation: wobfast 0.85s ease-in-out infinite;
+}
+@keyframes wobfast {
+  0%,
+  100% {
+    transform: rotate(-7deg) translateX(-5px);
+  }
+  50% {
+    transform: rotate(7deg) translateX(5px);
+  }
+}
+.totem-stage.spun .totem-shadow {
+  animation: shdwf 0.85s ease-in-out infinite;
+}
+@keyframes shdwf {
+  0%,
+  100% {
+    transform: scaleX(0.8);
+  }
+  50% {
+    transform: scaleX(1.12);
+  }
+}
+/* .totem-shine {
+  position: absolute;
+  inset: -8% -20%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: linear-gradient(
+    100deg,
+    transparent 42%,
+    rgba(255, 240, 200, 0.13) 50%,
+    transparent 58%
+  );
+  background-size: 250% 100%;
+  animation: shine 5.6s ease-in-out infinite;
+} */
+@keyframes shine {
+  0% {
+    background-position: 130% 0;
+  }
+  100% {
+    background-position: -130% 0;
+  }
+}
+.totem-sub {
+  margin-top: clamp(2.6rem, 7vh, 4.4rem);
+  z-index: 2;
+  font: 400 0.62rem/2 var(--sans);
+  letter-spacing: 0.36em;
+  color: var(--muted);
+  text-transform: uppercase;
+  transition:
+    opacity 0.5s var(--ease),
+    filter 0.5s var(--ease);
+}
+.totem-sub.swap {
+  opacity: 0;
+  filter: blur(6px);
+}

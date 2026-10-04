@@ -1,0 +1,259 @@
+/* ---------- architecture — the folding city ---------- */
+#architecture {
+  background: var(--bg);
+}
+.arch-scroll {
+  height: 240vh;
+  position: relative;
+}
+.arch-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(180deg, #0a0b0e 0%, #181b23 46%, #101218 100%);
+}
+.cloud {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(58px);
+  pointer-events: none;
+  background: radial-gradient(
+    closest-side,
+    rgba(120, 128, 144, 0.5),
+    transparent 70%
+  );
+}
+.cloud-1 {
+  width: 62vw;
+  height: 34vh;
+  top: -9vh;
+  left: -12vw;
+  opacity: 0.5;
+  animation: drift1 80s ease-in-out infinite alternate;
+}
+.cloud-2 {
+  width: 52vw;
+  height: 30vh;
+  top: 2vh;
+  right: -14vw;
+  opacity: 0.4;
+  animation: drift2 96s ease-in-out infinite alternate;
+}
+@keyframes drift1 {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(7vw);
+  }
+}
+@keyframes drift2 {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-8vw);
+  }
+}
+.arch-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    60% 40% at 70% 12%,
+    rgba(205, 214, 232, 0.07),
+    transparent 70%
+  );
+  animation: lightning 19s ease-in-out infinite;
+}
+@keyframes lightning {
+  0%,
+  91%,
+  94%,
+  100% {
+    opacity: 0;
+  }
+  92% {
+    opacity: 1;
+  }
+  93% {
+    opacity: 0.2;
+  }
+}
+.arch-readout {
+  position: absolute;
+  top: 88px;
+  left: 4vw;
+  z-index: 4;
+  font: 400 0.58rem/1.8 var(--sans);
+  letter-spacing: 0.3em;
+  color: rgba(154, 150, 143, 0.75);
+  text-transform: uppercase;
+}
+.arch-floor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: min(30vh, 260px);
+  z-index: 1;
+}
+.arch-floor svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.arch-city {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: min(30vh, 260px);
+  height: 25vh;
+  z-index: 1;
+  -webkit-mask-image: linear-gradient(to top, #000 45%, transparent 98%);
+  mask-image: linear-gradient(to top, #000 45%, transparent 98%);
+}
+.arch-city svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.arch-fog {
+  position: absolute;
+  bottom: 6vh;
+  left: -10%;
+  width: 120%;
+  height: 20vh;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(122, 130, 148, 0.17) 45%,
+    transparent
+  );
+  filter: blur(16px);
+  animation: fogA 50s ease-in-out infinite alternate;
+}
+.tower-pos {
+  position: absolute;
+  left: 50%;
+  bottom: 13vh;
+  width: min(46vh, 430px);
+  transform: translateX(-50%);
+  z-index: 2;
+}
+.tower-fold {
+  transform-origin: 50% 100%;
+  will-change: transform;
+}
+.tower-fold svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  will-change: transform;
+}
+.arch-title {
+  position: absolute;
+  right: 8vw;
+  top: 15vh;
+  z-index: 4;
+  text-align: right;
+  will-change: transform;
+}
+.arch-title h2 {
+  font: 500 clamp(2.4rem, 5.4vw, 4.9rem)/1.05 var(--serif);
+  letter-spacing: 0.05em;
+  color: var(--gold);
+  text-shadow: 0 0 60px rgba(201, 168, 108, 0.14);
+}
+.arch-title p {
+  margin-top: 1rem;
+  font: 400 0.66rem/1 var(--sans);
+  letter-spacing: 0.44em;
+  color: var(--muted);
+}
+.arch-echo {
+  position: absolute;
+  left: 50%;
+  bottom: 11vh;
+  transform: translateX(-50%);
+  z-index: 4;
+  text-align: center;
+  white-space: nowrap;
+}
+.arch-echo .big {
+  font: 500 clamp(1.9rem, 4.4vw, 3.5rem)/1 var(--serif);
+  letter-spacing: 0.14em;
+  color: var(--ink);
+}
+.arch-echo .small {
+  margin-top: 0.7rem;
+  font: 400 0.6rem/1 var(--sans);
+  letter-spacing: 0.44em;
+  color: var(--gold);
+}
+.arch-copy {
+  position: absolute;
+  left: 4vw;
+  bottom: 9vh;
+  width: min(430px, 86vw);
+  z-index: 5;
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 1.1s var(--ease),
+    transform 1.1s var(--ease);
+}
+.arch-copy.in {
+  opacity: 1;
+  transform: none;
+}
+.arch-copy .kicker {
+  display: block;
+  margin-bottom: 1.1rem;
+  color: var(--gold);
+}
+.arch-copy p {
+  font: 300 0.92rem/1.85 var(--sans);
+  color: var(--body);
+}
+.arch-quote {
+  margin-top: 1.4rem;
+  font: 400 1.15rem/1.6 var(--serif);
+  font-style: italic;
+  color: var(--ink);
+}
+.arch-quote cite {
+  display: block;
+  margin-top: 0.6rem;
+  font: 400 0.58rem/1 var(--sans);
+  font-style: normal;
+  letter-spacing: 0.36em;
+  color: var(--muted);
+}
+.maze-row {
+  margin-top: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.maze-box {
+  background: #0d0f14;
+  border: 1px solid var(--hair);
+  padding: 10px;
+  flex: none;
+}
+.maze-box svg {
+  display: block;
+  width: 84px;
+  height: 84px;
+}
+.maze-cap {
+  font: 400 0.56rem/1.9 var(--sans);
+  letter-spacing: 0.28em;
+  color: var(--muted);
+  text-transform: uppercase;
+}

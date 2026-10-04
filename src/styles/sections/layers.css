@@ -1,0 +1,213 @@
+/* =========================================================
+   DREAM LEVELS
+   ========================================================= */
+
+#layers #dreamStage {
+  position: relative;
+  height: 500vh;
+  width: 100%;
+}
+
+#layers #dreamBackground {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  z-index: 0;
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+#layers #dreamBackground img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  filter:
+    grayscale(1)
+    brightness(.35)
+    contrast(1.15);
+}
+
+#layers #dreamSticky {
+  position: sticky !important;
+  top: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  overflow: hidden;
+
+  perspective: 900px;
+}
+
+#layers #dreamLayers {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 2;
+}
+
+#layers .dream-layer {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  place-items: center;
+
+  padding: 1.5rem;
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+  will-change: transform, opacity, filter;
+
+  pointer-events: none;
+}
+
+#layers .dream-frame {
+  position: relative;
+  overflow: hidden;
+
+  width: min(86vw, 640px);
+  aspect-ratio: 16 / 10;
+
+  display: grid;
+  place-items: center;
+
+  padding: 1.5rem;
+  box-sizing: border-box;
+
+  border: 1px solid rgba(245, 245, 245, 0.18);
+}
+
+#layers .dream-image {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  z-index: 0;
+}
+
+#layers .dream-frame-content {
+   position: relative;
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+}
+
+#layers .dream-label {
+  margin: 0;
+
+  font: 400 0.65rem / 1 var(--sans);
+
+  letter-spacing: 0.5em;
+
+  color: var(--gold);
+}
+
+#layers .dream-title {
+  margin: 1.5rem 0 0;
+
+  font: 300 clamp(1.25rem, 3vw, 2rem) / 1.3 var(--sans);
+
+  letter-spacing: 0.02em;
+
+  color: var(--text);
+}
+
+#layers #dreamHint {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 2rem;
+
+  z-index: 50;
+
+  text-align: center;
+
+
+
+
+  pointer-events: none;
+
+  transition: opacity 0.3s ease;
+
+  font: 400 0.64rem / 1.6 var(--sans);
+
+  letter-spacing: 0.32em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* ---------- reduced motion ---------- */
+
+.reduced #layers #dreamStage {
+  height: auto;
+}
+
+.reduced #layers #dreamSticky {
+  position: relative !important;
+
+  height: auto;
+
+  overflow: visible;
+}
+
+.reduced #layers .dream-layer {
+  position: relative;
+
+  inset: auto;
+
+  width: 100%;
+  height: auto;
+
+  min-height: 50vh;
+
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+/* ---------- mobile ---------- */
+
+@media (max-width: 600px) {
+  #layers .dream-frame {
+    width: 90vw;
+    aspect-ratio: 4 / 3;
+  }
+
+  #layers .dream-title {
+    font-size: 1.15rem;
+  }
+
+  #layers #dreamHint {
+    bottom: 1.5rem;
+    font-size: 9px;
+  }
+}

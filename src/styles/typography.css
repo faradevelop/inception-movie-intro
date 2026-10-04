@@ -1,0 +1,17 @@
+/* ---------- typography helpers ---------- */
+.kicker{
+  font:400 .66rem/1 var(--sans);letter-spacing:.42em;text-transform:uppercase;
+  color:var(--muted);
+}
+.idx{font:500 clamp(1.3rem,2vw,1.7rem)/1 var(--serif);color:var(--gold)}
+.idx-rule{width:64px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+.idx-label{font:400 .64rem/1.5 var(--sans);letter-spacing:.4em;text-transform:uppercase;color:var(--muted)}
+.sec-head{display:flex;align-items:center;gap:1.2rem;margin-bottom:clamp(3rem,7vh,5.5rem)}
+.h2{font:500 clamp(2.4rem,4.8vw,4.4rem)/1.06 var(--serif);letter-spacing:.01em}
+.h2 em{font-style:italic;color:var(--gold)}
+.lede{color:var(--body);max-width:58ch}
+.lede + .lede{margin-top:1.4rem}
+.dropcap::first-letter{
+  font:500 3.3em/.78 var(--serif);color:var(--gold);
+  float:left;padding:.1em .14em 0 0;
+}

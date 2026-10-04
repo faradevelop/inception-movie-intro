@@ -1,0 +1,34 @@
+<!-- ==================== ii · TRAILER — ENTER THE DREAM ==================== -->
+<section class="sec" id="trailer" aria-labelledby="trailer-h">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="idx">ii</span
+      ><span class="idx-rule" aria-hidden="true"></span
+      ><span class="idx-label">The Trailer</span>
+    </div>
+    <div class="trailer-head">
+      <h2 class="h2" id="trailer-h" data-reveal>Enter the <em>dream.</em></h2>
+      <p class="kicker" data-reveal style="--d: 0.1s">Press play — and fall</p>
+    </div>
+    <div class="trailer-wrap" data-reveal style="--d: 0.15s">
+      <!-- To attach the trailer, set data-video to a video URL (mp4/webm); optional data-poster. -->
+      <div
+        class="trailer-frame"
+        id="trailerFrame"
+        data-video="/public/assets/vid/Inception-Official-Trailer.mp4"
+      >
+        <img
+          src="/public/assets/img/inception-video-poster.jpg"
+          alt="Inception movie trailer poster"
+          loading="lazy"
+          decoding="async"
+          onerror="this.style.display = 'none'"
+        />
+        <button class="trailer-play" id="trailerBtn" aria-label="Play trailer">
+          <i aria-hidden="true"></i><span id="trailerLabel">Play trailer</span>
+        </button>
+      </div>
+      <span class="trailer-corner" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>

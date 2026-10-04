@@ -1,0 +1,20 @@
+import { initSkylines } from './utils/skyline.js';
+import { initEntrance, initReveal } from './features/reveal.js';
+import { initScrollLoop } from './features/scroll-loop.js';
+import { initSoundToggle } from './features/audio.js';
+import { initNavigation } from './features/navigation.js';
+import { initDreamLevels } from './features/layers.js';
+import { initTotem } from './features/totem.js';
+import { initTrailer } from './features/trailer.js';
+import { initFinale } from './features/finale.js';
+
+initSkylines();
+initEntrance();
+initReveal();
+initScrollLoop();
+initSoundToggle();
+initNavigation();
+initDreamLevels();
+initTotem();
+initTrailer();
+initFinale();

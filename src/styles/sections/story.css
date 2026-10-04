@@ -1,0 +1,368 @@
+/* ---------- story ---------- */
+
+#story {
+  background: linear-gradient(180deg, var(--bg), #0d0f15 45%, var(--bg));
+}
+
+.story-grid {
+  display: grid;
+
+  /* LEFT = levels / RIGHT = story */
+  grid-template-columns:
+    minmax(0, 0.82fr)
+    minmax(0, 1.05fr);
+
+  gap: clamp(3rem, 6vw, 7rem);
+
+  align-items: start;
+}
+
+/* =========================================================
+   RIGHT · STORY CONTENT
+   ========================================================= */
+
+.story-content h2 {
+  margin-bottom: 2.4rem;
+}
+
+.pullquote {
+  margin-top: clamp(3.4rem, 7vh, 5.4rem);
+  padding-left: 2rem;
+  border-left: 1px solid var(--gold);
+  max-width: 26em;
+}
+
+.pullquote p {
+  font: 400 clamp(1.45rem, 2.5vw, 2.05rem) / 1.5 var(--serif);
+
+  font-style: italic;
+  color: var(--ink);
+}
+
+.pullquote cite {
+  display: block;
+  margin-top: 1.2rem;
+
+  font: 400 0.62rem / 1 var(--sans);
+
+  font-style: normal;
+  letter-spacing: 0.4em;
+  color: var(--muted);
+}
+
+.loc {
+  margin-top: clamp(3.4rem, 7vh, 5.4rem);
+
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 0.9rem 1.7rem;
+
+  font: 400 0.64rem / 1.6 var(--sans);
+
+  letter-spacing: 0.32em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.loc .sep {
+  color: var(--gold);
+}
+
+/* =========================================================
+   LEFT · DREAM LEVELS
+   ========================================================= */
+
+.story-levels {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 1.5rem;
+}
+
+/* ---------- cards ---------- */
+
+.story-levels .plate {
+  width: 100%;
+  will-change: transform;
+}
+
+.story-levels .plate-1 {
+  transform: rotate(-1.2deg);
+}
+
+.story-levels .plate-2 {
+  margin-top: -0.8rem;
+  transform: rotate(1deg);
+  z-index: 2;
+}
+
+.story-levels .plate-3 {
+  margin-top: -0.8rem;
+  transform: rotate(-0.8deg);
+  z-index: 1;
+}
+
+/* ---------- card ---------- */
+
+.story-levels .plate-card {
+  background: linear-gradient(180deg, #14161d, #101218);
+
+  border: 1px solid var(--hair);
+
+  padding: clamp(0.95rem, 1.6vw, 1.4rem);
+
+  box-shadow: 0 34px 74px -30px rgba(0, 0, 0, 0.8);
+
+  transition:
+    transform 0.6s var(--ease),
+    border-color 0.5s,
+    box-shadow 0.6s;
+}
+
+.story-levels .plate:hover .plate-card {
+  transform: translateY(-7px);
+
+  border-color: rgba(201, 168, 108, 0.35);
+
+  box-shadow:
+    0 46px 90px -30px rgba(0, 0, 0, 0.9),
+    0 0 40px -18px rgba(201, 168, 108, 0.35);
+}
+
+/* ---------- header ---------- */
+
+.story-levels .plate-head {
+  display: flex;
+  align-items: baseline;
+
+  gap: 1rem;
+
+  margin-bottom: 0.95rem;
+
+  flex-wrap: wrap;
+}
+
+.story-levels .lv {
+  font: 500 0.6rem/1 var(--sans);
+
+  letter-spacing: 0.34em;
+  color: var(--gold);
+}
+
+.story-levels .plate-head h3 {
+  font: 500 clamp(1.25rem, 2.3vw, 1.75rem)/1.1 var(--serif);
+}
+
+.story-levels .plate-head .meta {
+  margin-left: auto;
+
+  font: 400 0.56rem/1.4 var(--sans);
+
+  letter-spacing: 0.26em;
+  color: var(--muted);
+
+  text-transform: uppercase;
+}
+
+/* ---------- visual ---------- */
+
+.story-levels .plate-visual {
+  position: relative;
+
+  aspect-ratio: 16/10;
+
+  overflow: hidden;
+
+  background: #0d0f14;
+
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.story-levels .plate-visual svg,
+.story-levels .plate-visual img {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+/* ---------- fog ---------- */
+
+.story-levels .pv-fog {
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(
+    180deg,
+    rgba(13, 15, 20, 0.25),
+    transparent 35%,
+    transparent 60%,
+    rgba(11, 12, 15, 0.72)
+  );
+
+  pointer-events: none;
+}
+
+/* ---------- body ---------- */
+
+.story-levels .plate > .plate-card > p {
+  margin-top: 1.05rem;
+
+  font: 300 0.93rem/1.8 var(--sans);
+
+  color: var(--body);
+
+  max-width: 54ch;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 800px) {
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: clamp(4rem, 10vw, 6rem);
+  }
+
+  .story-levels {
+    gap: 1.25rem;
+  }
+
+  .story-levels .plate-1,
+  .story-levels .plate-2,
+  .story-levels .plate-3 {
+    margin-top: 0;
+  }
+
+  .story-levels .plate-1 {
+    transform: rotate(-0.8deg);
+  }
+
+  .story-levels .plate-2 {
+    transform: rotate(0.8deg);
+  }
+
+  .story-levels .plate-3 {
+    transform: rotate(-0.6deg);
+  }
+}
+
+@media (max-width: 520px) {
+  .story-levels {
+    gap: 1rem;
+  }
+
+  .story-levels .plate-card {
+    padding: 0.9rem;
+  }
+
+  .story-levels .plate-head {
+    gap: 0.65rem;
+  }
+
+  .story-levels .plate-head h3 {
+    width: 100%;
+  }
+
+  .story-levels .plate-head .meta {
+    margin-left: 0;
+
+    width: 100%;
+
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+  }
+
+  .story-levels .plate > .plate-card > p {
+    font-size: 0.88rem;
+    line-height: 1.75;
+  }
+}
+
+/* ---------- compact dream level cards ---------- */
+
+.story-levels {
+  gap: 1rem;
+}
+
+.story-levels .plate {
+  width: 78%;
+}
+
+.story-levels .plate-card {
+  padding: .7rem;
+}
+
+.story-levels .plate-head {
+  gap: .55rem;
+  margin-bottom: .6rem;
+}
+
+.story-levels .lv {
+  font-size: .5rem;
+}
+
+.story-levels .plate-head h3 {
+  font-size: 1.15rem;
+}
+
+.story-levels .plate-head .meta {
+  font-size: .45rem;
+  letter-spacing: .18em;
+}
+
+.story-levels .plate-visual {
+  aspect-ratio: 16 / 8;
+}
+
+.story-levels .plate > .plate-card > p {
+  margin-top: .65rem;
+  font-size: .72rem;
+  line-height: 1.55;
+}
+
+
+/* ---------- stagger ---------- */
+
+.story-levels .plate-1 {
+  align-self: flex-start;
+}
+
+.story-levels .plate-2 {
+  align-self: flex-end;
+  margin-top: -1.2rem;
+}
+
+.story-levels .plate-3 {
+  align-self: center;
+  margin-top: -1.2rem;
+}
+
+
+/* ---------- mobile ---------- */
+
+@media (max-width: 800px) {
+  .story-levels .plate {
+    width: 100%;
+  }
+
+  .story-levels .plate-1,
+  .story-levels .plate-2,
+  .story-levels .plate-3 {
+    align-self: stretch;
+    margin-top: 0;
+  }
+
+  .story-levels .plate-visual {
+    aspect-ratio: 16 / 9;
+  }
+}
