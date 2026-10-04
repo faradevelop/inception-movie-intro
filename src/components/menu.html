@@ -1,19 +1,61 @@
 <!-- full-screen index -->
-<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Site index">
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Site index" aria-hidden="true">
   <div class="menu-top">
     <span class="brand">INCEPTION</span>
-    <button class="menu-close" id="menuClose">Close ×</button>
+    <button class="menu-close" id="menuClose" type="button">
+      <span>Close</span><i aria-hidden="true"></i>
+    </button>
   </div>
-  <nav class="menu-inner" aria-label="Index">
-    <a href="#reality" style="--i:0"><span>00</span>Reality</a>
-    <a href="#film" style="--i:1"><span>i</span>The Film</a>
-    <a href="#story" style="--i:2"><span>01</span>The Pitch</a>
-    <a href="#trailer" style="--i:3"><span>ii</span>Trailer</a>
-    <a href="#layers" style="--i:4"><span>02</span>The Descent</a>
-    <a href="#architecture" style="--i:5"><span>03</span>The Folded City</a>
-    <a href="#cast" style="--i:6"><span>04</span>The Passengers</a>
-    <a href="#totem" style="--i:7"><span>05</span>The Totem</a>
-    <a href="#limbo" style="--i:8"><span>06</span>Limbo</a>
-    <a href="#finale" style="--i:9"><span>07</span>The Cut</a>
-  </nav>
+
+  <div class="menu-body">
+    <nav class="menu-inner" aria-label="Index">
+      <a href="#reality" style="--i:0" data-d="The surface. Everything looks solid — for now.">
+        <span class="mi-n">00</span><span class="mi-t">Reality</span>
+      </a>
+      <a href="#film" style="--i:1" data-d="The dossier: ratings, credits and the numbers behind the dream.">
+        <span class="mi-n">i</span><span class="mi-t">The Film</span>
+      </a>
+      <a href="#story" style="--i:2" data-d="Plant one idea so deep it grows as if it had always been yours.">
+        <span class="mi-n">01</span><span class="mi-t">The Pitch</span>
+      </a>
+      <a href="#trailer" style="--i:3" data-d="Press play — and fall.">
+        <span class="mi-n">ii</span><span class="mi-t">Trailer</span>
+      </a>
+      <a href="#layers" style="--i:4" data-d="Three levels, each one deeper, slower and harder to leave.">
+        <span class="mi-n">02</span><span class="mi-t">The Descent</span>
+      </a>
+      <a href="#architecture" style="--i:5" data-d="A city that folds onto itself, ruled by memory instead of physics.">
+        <span class="mi-n">03</span><span class="mi-t">The Folded City</span>
+      </a>
+      <a href="#cast" style="--i:6" data-d="Six minds, one job. Every dream has a price.">
+        <span class="mi-n">04</span><span class="mi-t">The Passengers</span>
+      </a>
+      <a href="#totem" style="--i:7" data-d="The only way to know what is real.">
+        <span class="mi-n">05</span><span class="mi-t">The Totem</span>
+      </a>
+      <a href="#limbo" style="--i:8" data-d="Unconstructed dream space. Nothing here ever leaves.">
+        <span class="mi-n">06</span><span class="mi-t">Limbo</span>
+      </a>
+      <a href="#finale" style="--i:9" data-d="The cut. Spin it, and see whether it falls.">
+        <span class="mi-n">07</span><span class="mi-t">The Cut</span>
+      </a>
+    </nav>
+
+    <aside class="menu-aside" aria-hidden="true">
+      <div class="ma-gauge" id="maGauge">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+      <div class="ma-box" id="maBox">
+        <span class="ma-num" id="maNum">00</span>
+        <p class="ma-kicker" id="maKicker">Reality</p>
+        <p class="ma-desc" id="maDesc"></p>
+      </div>
+      <blockquote class="ma-quote">“You mustn’t be afraid to dream a little bigger.”</blockquote>
+    </aside>
+  </div>
+
+  <p class="menu-foot" aria-hidden="true">
+    <span>&uarr; &darr; navigate</span>
+    <span>Esc close</span>
+  </p>
 </div>
