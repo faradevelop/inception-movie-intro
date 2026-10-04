@@ -1,165 +1,385 @@
 /* =========================================================
-   DREAM LEVELS
+   DREAM LEVELS  →  LIMBO  →  (architecture)
    ========================================================= */
+
+#layers.sec {
+  padding-bottom: 0; /* limbo dusk flows straight into the architecture */
+}
 
 #layers #dreamStage {
   position: relative;
-  height: 500vh;
+  height: 640vh;
   width: 100%;
-}
-
-#layers #dreamBackground {
-  position: fixed;
-
-  top: 0;
-  left: 0;
-
-  width: 100vw;
-  height: 100vh;
-
-  z-index: 0;
-
-  overflow: hidden;
-
-  opacity: 0;
-
-  pointer-events: none;
-}
-
-#layers #dreamBackground img {
-  display: block;
-
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-  object-position: center;
-
-  filter:
-    grayscale(1)
-    brightness(.35)
-    contrast(1.15);
 }
 
 #layers #dreamSticky {
   position: sticky !important;
   top: 0;
-
   width: 100%;
   height: 100vh;
-
+  height: 100svh;
   overflow: hidden;
-
   perspective: 900px;
+  background: var(--bg);
 }
+
+/* ---------- deep backdrop ---------- */
+
+#layers #dreamBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#layers #dreamBackground img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(1) brightness(0.35) contrast(1.15);
+}
+
+/* ---------- limbo ---------- */
+
+#layers #dreamLimbo {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    #14161b 0%,
+    #2a2d32 9%,
+    #aeb1b1 36%,
+    #d9d9d6 58%,
+    #dcdcd9 100%
+  );
+}
+
+#layers .dl-ghost {
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  transform: translate(-50%, calc(-50% + var(--py, 0px)));
+  font: 600 23vw/1 var(--serif);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  color: rgba(20, 22, 26, 0.05);
+  -webkit-text-stroke: 1px rgba(20, 22, 26, 0.1);
+  will-change: transform;
+}
+
+#layers .dl-ash {
+  position: absolute;
+  top: -4%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(40, 44, 48, 0.2);
+  animation: dlAsh var(--t, 30s) linear var(--dl, 0s) infinite;
+}
+
+@keyframes dlAsh {
+  from {
+    transform: translate3d(0, -4vh, 0);
+  }
+  to {
+    transform: translate3d(var(--dx, 30px), 110vh, 0);
+  }
+}
+
+#layers .dl-ruins {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 34vh;
+  opacity: 0.3;
+  will-change: transform;
+  -webkit-mask-image: linear-gradient(to top, #000 40%, transparent 98%);
+  mask-image: linear-gradient(to top, #000 40%, transparent 98%);
+}
+
+#layers .dl-ruins svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#layers .dl-limbo-copy {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+#layers .dl-limbo-inner {
+  max-width: 640px;
+  padding: 0 6vw;
+  text-align: center;
+}
+
+#layers .dl-limbo-kicker {
+  margin-bottom: 1.8rem;
+  font: 400 0.66rem/1 var(--sans);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: #6a6e74;
+}
+
+#layers .dl-limbo-inner h3 {
+  font: 500 clamp(2rem, 4.6vw, 3.8rem) / 1.12 var(--serif);
+  color: #33373c;
+}
+
+#layers .dl-limbo-inner h3 em {
+  display: block;
+  font-style: italic;
+  color: #55595e;
+}
+
+#layers .dl-limbo-text {
+  margin-top: 1.6rem;
+  font: 300 0.98rem/1.95 var(--sans);
+  color: #4a4e54;
+}
+
+/* ---------- dusk (limbo → architecture) ---------- */
+
+#layers #dreamDusk {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  opacity: 0;
+  background: #0a0b0e;
+  pointer-events: none;
+}
+
+/* ---------- levels ---------- */
 
 #layers #dreamLayers {
   position: absolute;
   inset: 0;
-
-  width: 100%;
-  height: 100%;
-
   z-index: 2;
 }
 
 #layers .dream-layer {
   position: absolute;
-
   inset: 0;
-
   width: 100%;
   height: 100%;
-
   display: grid;
   place-items: center;
-
   padding: 1.5rem;
-
   box-sizing: border-box;
-
   text-align: center;
-
   will-change: transform, opacity, filter;
-
   pointer-events: none;
 }
 
 #layers .dream-frame {
   position: relative;
   overflow: hidden;
-
   width: min(86vw, 640px);
   aspect-ratio: 16 / 10;
-
   display: grid;
-  place-items: center;
-
-  padding: 1.5rem;
+  place-items: end center;
+  padding: 1.6rem 1.5rem 1.8rem;
   box-sizing: border-box;
-
   border: 1px solid rgba(245, 245, 245, 0.18);
+  box-shadow: 0 50px 110px -40px rgba(0, 0, 0, 0.9);
+  background: #0d0f14;
+}
+
+/* legibility veil + cinematic corner marks */
+#layers .dream-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 12, 15, 0.1) 0%,
+    transparent 38%,
+    rgba(11, 12, 15, 0.82) 100%
+  );
+}
+
+#layers .dream-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0.7rem;
+  z-index: 1;
+  pointer-events: none;
+  border: 1px solid rgba(201, 168, 108, 0.28);
+  -webkit-mask:
+    linear-gradient(#000 0 0) top left / 16px 16px no-repeat,
+    linear-gradient(#000 0 0) top right / 16px 16px no-repeat,
+    linear-gradient(#000 0 0) bottom left / 16px 16px no-repeat,
+    linear-gradient(#000 0 0) bottom right / 16px 16px no-repeat;
+  mask:
+    linear-gradient(#000 0 0) top left / 16px 16px no-repeat,
+    linear-gradient(#000 0 0) top right / 16px 16px no-repeat,
+    linear-gradient(#000 0 0) bottom left / 16px 16px no-repeat,
+    linear-gradient(#000 0 0) bottom right / 16px 16px no-repeat;
 }
 
 #layers .dream-image {
   position: absolute;
   inset: 0;
-
+  z-index: 0;
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-
-  z-index: 0;
+  filter: grayscale(0.55) brightness(0.8) contrast(1.08);
 }
 
 #layers .dream-frame-content {
-   position: relative;
-  z-index: 1;
+  position: relative;
+  z-index: 2;
   width: 100%;
   text-align: center;
 }
 
 #layers .dream-label {
   margin: 0;
-
-  font: 400 0.65rem / 1 var(--sans);
-
+  font: 400 0.65rem/1 var(--sans);
   letter-spacing: 0.5em;
-
+  text-indent: 0.5em;
   color: var(--gold);
 }
 
 #layers .dream-title {
-  margin: 1.5rem 0 0;
-
-  font: 300 clamp(1.25rem, 3vw, 2rem) / 1.3 var(--sans);
-
+  margin: 0.9rem 0 0;
+  font: 400 clamp(1.15rem, 2.8vw, 1.9rem) / 1.25 var(--serif);
   letter-spacing: 0.02em;
-
-  color: var(--text);
+  color: var(--ink);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.7);
 }
+
+#layers .dream-meta {
+  margin: 0.8rem 0 0;
+  font: 400 0.54rem/1.6 var(--sans);
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- HUD ---------- */
+
+#layers .dl-hud {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+}
+
+#layers .dl-depth {
+  position: absolute;
+  left: 4vw;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+#layers .dl-depth li {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font: 400 0.6rem/1 var(--serif);
+  letter-spacing: 0.3em;
+  color: var(--muted);
+  transition: color 0.5s;
+}
+
+#layers .dl-depth li i {
+  display: block;
+  width: 16px;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.55s var(--ease);
+}
+
+#layers .dl-depth li.done {
+  color: rgba(201, 168, 108, 0.5);
+}
+
+#layers .dl-depth li.on {
+  color: var(--gold);
+}
+
+#layers .dl-depth li.on i {
+  width: 42px;
+}
+
+#layers .dl-clock {
+  position: absolute;
+  right: 4vw;
+  bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+  transition: color 0.5s;
+}
+
+#layers .dl-clock span {
+  font: 400 0.56rem/1 var(--sans);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+#layers .dl-clock b {
+  font: 500 1.5rem/1 var(--serif);
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  transition: opacity 0.3s;
+}
+
+/* HUD on the pale limbo backdrop */
+#layers #dreamSticky.dl-light .dl-depth li {
+  color: #6a6e74;
+}
+#layers #dreamSticky.dl-light .dl-depth li.done {
+  color: #8a8d92;
+}
+#layers #dreamSticky.dl-light .dl-depth li.on {
+  color: #33373c;
+}
+#layers #dreamSticky.dl-light .dl-clock span {
+  color: #6a6e74;
+}
+#layers #dreamSticky.dl-light .dl-clock b {
+  color: #33373c;
+}
+#layers #dreamSticky.dl-light #dreamHint {
+  color: #6a6e74;
+}
+
+/* ---------- hint ---------- */
 
 #layers #dreamHint {
   position: absolute;
-
   left: 0;
   right: 0;
   bottom: 2rem;
-
   z-index: 50;
-
   text-align: center;
-
-
-
-
   pointer-events: none;
-
   transition: opacity 0.3s ease;
-
   font: 400 0.64rem / 1.6 var(--sans);
-
   letter-spacing: 0.32em;
   color: var(--muted);
   text-transform: uppercase;
@@ -173,25 +393,44 @@
 
 .reduced #layers #dreamSticky {
   position: relative !important;
-
   height: auto;
-
   overflow: visible;
+}
+
+.reduced #layers #dreamBackground,
+.reduced #layers .dl-hud,
+.reduced #layers #dreamHint,
+.reduced #layers #dreamDusk {
+  display: none;
+}
+
+.reduced #layers #dreamLayers {
+  position: relative;
 }
 
 .reduced #layers .dream-layer {
   position: relative;
-
   inset: auto;
-
   width: 100%;
   height: auto;
-
   min-height: 50vh;
-
   opacity: 1 !important;
   transform: none !important;
   filter: none !important;
+}
+
+.reduced #layers #dreamLimbo {
+  position: relative;
+  opacity: 1 !important;
+  min-height: 70vh;
+  display: grid;
+}
+
+.reduced #layers .dl-limbo-copy {
+  position: relative;
+  opacity: 1 !important;
+  transform: none !important;
+  padding: 18vh 0;
 }
 
 /* ---------- mobile ---------- */
@@ -203,6 +442,33 @@
   }
 
   #layers .dream-title {
+    font-size: 1.1rem;
+  }
+
+  #layers .dream-meta {
+    font-size: 0.48rem;
+    letter-spacing: 0.24em;
+  }
+
+  #layers .dl-depth {
+    left: 3.5vw;
+    gap: 1.1rem;
+  }
+
+  #layers .dl-depth li i {
+    width: 10px;
+  }
+
+  #layers .dl-depth li.on i {
+    width: 22px;
+  }
+
+  #layers .dl-clock {
+    bottom: 3.6rem;
+    right: 5vw;
+  }
+
+  #layers .dl-clock b {
     font-size: 1.15rem;
   }
 

@@ -1,7 +1,6 @@
 <!-- ==================== 02 · DREAM LAYERS ==================== -->
 <section class="sec" id="layers" aria-labelledby="layers-h">
   <div class="wrap">
-    <!-- SECTION HEADER — KEEP -->
     <div class="sec-head" data-reveal>
       <span class="idx">02</span>
       <span class="idx-rule" aria-hidden="true"></span>
@@ -16,64 +15,112 @@
     >
       A world <em>within</em> a world.
     </h2>
+  </div>
 
-    <!-- DREAM LEVELS -->
-    <div id="dreamStage">
-      <div id="dreamSticky">
-        <div id="dreamBackground">
-          <img src="/public/assets/img/2laHD.jpg" alt="" />
+  <!-- Full-bleed scroll stage: 3 nested levels → limbo → dusk → architecture -->
+  <div id="dreamStage">
+    <div id="dreamSticky">
+      <!-- deep backdrop that grows behind level 03 -->
+      <div id="dreamBackground" aria-hidden="true">
+        <img src="/public/assets/img/levels/level-end.png" alt="" />
+      </div>
+
+      <!-- LIMBO: appears after the last level has been crossed -->
+      <div id="dreamLimbo">
+        <span class="dl-ghost" id="dreamGhost" aria-hidden="true">LIMBO</span>
+        <span class="dl-ash" style="left:12%;--t:26s;--dx:40px" aria-hidden="true"></span>
+        <span class="dl-ash" style="left:28%;--t:34s;--dl:-9s;--dx:-30px" aria-hidden="true"></span>
+        <span class="dl-ash" style="left:44%;--t:29s;--dl:-15s;--dx:26px" aria-hidden="true"></span>
+        <span class="dl-ash" style="left:61%;--t:38s;--dl:-4s;--dx:-44px" aria-hidden="true"></span>
+        <span class="dl-ash" style="left:76%;--t:31s;--dl:-20s;--dx:34px" aria-hidden="true"></span>
+        <span class="dl-ash" style="left:88%;--t:36s;--dl:-11s;--dx:-20px" aria-hidden="true"></span>
+
+        <div class="dl-ruins" id="dreamRuins" aria-hidden="true">
+          <svg viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice">
+            <g id="dreamRuinsG"></g>
+          </svg>
         </div>
 
-        <div id="dreamHint" aria-hidden="true">SCROLL TO DESCEND</div>
-        <div id="dreamLayers">
-          <!-- LEVEL 01 -->
-          <article class="dream-layer" data-dream-layer="0" style="z-index: 3">
-            <div class="dream-frame">
-              <img
-                class="dream-image"
-                src="/public/assets/img/level1.jpg"
-                alt="Level 01 — Dream"
-              />
-
-              <div class="dream-frame-content">
-                <p class="dream-label">LEVEL 01</p>
-                <p class="dream-title">Dream</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- LEVEL 02 -->
-          <article class="dream-layer" data-dream-layer="1" style="z-index: 2">
-            <div class="dream-frame">
-              <img
-                class="dream-image"
-                src="/public/assets/img/level2.png"
-                alt="Level 02 — Dream within a Dream"
-              />
-
-              <div class="dream-frame-content">
-                <p class="dream-label">LEVEL 02</p>
-                <p class="dream-title">Dream within a Dream</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- LEVEL 03 -->
-          <article class="dream-layer" data-dream-layer="2" style="z-index: 1">
-            <div class="dream-frame">
-              <img
-                class="dream-image"
-                src="/public/assets/img/level3.png"
-                alt="Level 03 — Dream within a Dream within a Dream"
-              />
-
-              <div class="dream-frame-content">
-                <p class="dream-label">LEVEL 03</p>
-                <p class="dream-title">Dream within a Dream within a Dream</p>
-              </div>
-            </div>
-          </article>
+        <div class="dl-limbo-copy" id="dreamLimboCopy">
+          <div class="dl-limbo-inner">
+            <p class="dl-limbo-kicker">Beyond level 03</p>
+            <h3>No architecture. <em>Only the shore.</em></h3>
+            <p class="dl-limbo-text">
+              Past the third dream the levels end. What remains is raw
+              subconscious — a quiet, endless coast where time forgets to count.
+            </p>
+          </div>
         </div>
+      </div>
+
+      <!-- fade to the next section -->
+      <div id="dreamDusk" aria-hidden="true"></div>
+
+      <!-- HUD -->
+      <div class="dl-hud" id="dreamHud" aria-hidden="true">
+        <ol class="dl-depth">
+          <li data-tick><i></i><span>I</span></li>
+          <li data-tick><i></i><span>II</span></li>
+          <li data-tick><i></i><span>III</span></li>
+          <li data-tick><i></i><span>&infin;</span></li>
+        </ol>
+        <p class="dl-clock">
+          <span>Time dilation</span>
+          <b id="dreamTime">&times;20</b>
+        </p>
+      </div>
+
+      <div id="dreamHint" aria-hidden="true">SCROLL TO DESCEND</div>
+
+      <!-- NESTED LEVELS -->
+      <div id="dreamLayers">
+        <!-- LEVEL 01 -->
+        <article class="dream-layer" data-dream-layer="0" style="z-index: 3">
+          <div class="dream-frame">
+            <img
+              class="dream-image"
+              src="/public/assets/img/levels/level1.jpg"
+              alt="Level 01 — Dream"
+            />
+            <div class="dream-frame-content">
+              <p class="dream-label">LEVEL 01</p>
+              <p class="dream-title">Dream</p>
+              <p class="dream-meta">The Rain-Swept City &middot; One week</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- LEVEL 02 -->
+        <article class="dream-layer" data-dream-layer="1" style="z-index: 2">
+          <div class="dream-frame">
+            <img
+              class="dream-image"
+              src="/public/assets/img/levels/level2.png"
+              alt="Level 02 — Dream within a Dream"
+            />
+            <div class="dream-frame-content">
+              <p class="dream-label">LEVEL 02</p>
+              <p class="dream-title">Dream within a Dream</p>
+              <p class="dream-meta">The Hotel &middot; Six months</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- LEVEL 03 -->
+        <article class="dream-layer" data-dream-layer="2" style="z-index: 1">
+          <div class="dream-frame">
+            <img
+              class="dream-image"
+              src="/public/assets/img/levels/level3.png"
+              alt="Level 03 — Dream within a Dream within a Dream"
+            />
+            <div class="dream-frame-content">
+              <p class="dream-label">LEVEL 03</p>
+              <p class="dream-title">Dream within a Dream within a Dream</p>
+              <p class="dream-meta">The Snow Fortress &middot; Ten years</p>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </div>
