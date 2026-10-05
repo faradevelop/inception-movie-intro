@@ -60,7 +60,9 @@
   gap: clamp(1rem, 2vw, 1.6rem);
 }
 
-/* Card */
+/* Card
+   NOTE: the cards carry [data-reveal]; this transition list must keep the
+   opacity / filter entries, otherwise the reveal snaps instead of dissolving. */
 
 #cast .cast-card {
   min-width: 0;
@@ -73,7 +75,9 @@
   transition:
     border-color .45s ease,
     background-color .45s ease,
-    transform .45s ease;
+    transform .45s ease var(--d, 0s),
+    opacity 1.2s var(--ease) var(--d, 0s),
+    filter 1.2s var(--ease) var(--d, 0s);
 }
 
 /* Artwork */
@@ -183,7 +187,7 @@
   margin: 0;
   font: 500 clamp(1.65rem, 2.5vw, 2.35rem)/1.1 var(--serif);
   letter-spacing: .015em;
-  color: var(--text);
+  color: var(--ink);
   transition: color .4s ease;
 }
 

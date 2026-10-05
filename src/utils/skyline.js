@@ -3,6 +3,7 @@ import { $ } from './dom.js';
 /* ---------- seeded skyline generator ---------- */
 function mulberry(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
 function buildSkyline(g, opt){
+  if (!g) return; /* a missing slot must never break the page */
   opt = opt || {};
   const R = mulberry(opt.seed || 7);
   const W = 1440, H = 300;
@@ -46,5 +47,4 @@ export function initSkylines(){
   buildSkyline($('#skyFinBNear'), {seed:33});
   buildSkyline($('#skyFinBFar'),  {seed:39, minH:30, maxH:120, clusters:[[0,720],[720,1440]]});
   buildSkyline($('#skyArch'),     {seed:21, minH:40, maxH:150, clusters:[[0,520],[920,1440]], gold:.07});
-  buildSkyline($('#skyRain'),     {seed:11, minH:36, maxH:120, clusters:[[0,720],[720,1440]]});
 }

@@ -4,18 +4,22 @@ import { updateAmbient } from './audio.js';
 export function initScrollLoop(){
   /* ---------- cached layout metrics ---------- */
   let vh = window.innerHeight, docH = 1;
-  const speedEls = $$('[data-speed]').map(function(el){ return {el:el, s:parseFloat(el.dataset.speed)||0, top:0, h:1}; });
+  /* `y` = translateY currently applied by the scroll parallax. getBoundingClientRect()
+     includes it, so it is subtracted when measuring — otherwise every re-measure
+     (load / resize / 900ms timer) would bake the offset into `top` and the cards drift. */
+  const speedEls = $$('[data-speed]').map(function(el){ return {el:el, s:parseFloat(el.dataset.speed)||0, top:0, h:1, y:0}; });
   const paraEls  = $$('[data-para]').map(function(el){ return {el:el, f:parseFloat(el.dataset.para)||0}; });
   const sections = ['reality','film','story','trailer','layers','architecture','cast','totem','limbo','finale'].map(function(id){ return {id:id, el:$('#'+id), top:0, h:1}; });
-  const archSec  = $('#archScroll'), archStage = $('#archStage');
+  const archSec  = $('#archScroll');
   const foldWrap = $('#foldWrap'), foldDeg = $('#foldDeg'), archCopy = $('#archCopy');
   const archTitle = $('#archTitle'), archEcho = $('#archEcho');
+  const mobileMQ = window.matchMedia('(max-width:760px)');
 
   function measure(){
     vh = window.innerHeight;
     docH = document.documentElement.scrollHeight;
     const sy = window.scrollY;
-    speedEls.forEach(function(o){ const r = o.el.getBoundingClientRect(); o.top = r.top + sy; o.h = r.height; });
+    speedEls.forEach(function(o){ const r = o.el.getBoundingClientRect(); o.top = r.top + sy - o.y; o.h = r.height; });
     sections.forEach(function(o){ const r = o.el.getBoundingClientRect(); o.top = r.top + sy; o.h = r.height; });
     const ar = archSec.getBoundingClientRect(); archSec._top = ar.top + sy; archSec._h = ar.height;
   }
@@ -36,7 +40,6 @@ export function initScrollLoop(){
   /* ---------- main rAF loop ---------- */
   const nav = $('#nav'), bar = $('#progressBar');
   const railBtns = $$('#rail button');
-  let raf = true;
   function loop(){
     const sy = window.scrollY;
     const progress = clamp(sy / Math.max(docH - vh, 1), 0, 1);
@@ -61,20 +64,17 @@ export function initScrollLoop(){
         const o = paraEls[i];
         o.el.style.transform = 'translate3d(' + (px*o.f).toFixed(2) + 'px,' + (py*o.f*.7).toFixed(2) + 'px,0)';
       }
-      /* scroll parallax */
+      /* scroll parallax (tilt of the story stills uses the CSS `rotate` property) */
       const mid = sy + vh/2;
       for (let i=0;i<speedEls.length;i++){
         const o = speedEls[i];
         const y = (o.top + o.h/2 - mid) * o.s;
-        o.el.style.transform = (o.el.classList.contains('plate-1') ? 'rotate(-1.2deg) ' :
-                               o.el.classList.contains('plate-2') ? 'rotate(1deg) ' :
-                               o.el.classList.contains('plate-3') ? 'rotate(-.8deg) ' : '') +
-                               'translate3d(0,' + y.toFixed(1) + 'px,0)';
+        o.y = y;
+        o.el.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0)';
       }
       /* the folding city */
-      const mobile = window.matchMedia('(max-width:760px)').matches;
       let p;
-      if (mobile){
+      if (mobileMQ.matches){
         p = clamp((sy + vh - archSec._top) / Math.max(archSec._h, 1), 0, 1);
       } else {
         p = clamp((sy - archSec._top) / Math.max(archSec._h - vh, 1), 0, 1);
