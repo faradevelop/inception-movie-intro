@@ -10,189 +10,215 @@
 
     <div class="story-grid">
 
-      <!-- ==================== DREAM LEVELS ==================== -->
+      <!-- ==================== PREPARATION · BEFORE THE DREAM ==================== -->
+      <!--
+        Drop the film stills in /public/assets/img/prep/ using the file names below.
+        Until a still exists, the line-art drawing under it is shown instead.
+      -->
       <div class="story-levels">
 
-        <!-- Level 01 -->
-        <article class="plate plate-1" data-speed="-0.05">
-          <div class="plate-card" data-reveal>
-            <div class="plate-inner" data-para="7">
+        <!-- Step 01 · Paris -->
+        <article class="still still-odd still-1" data-speed="-0.02">
+          <div class="still-card" data-reveal>
+            <div class="still-inner">
 
-              <header class="plate-head">
-                <span class="lv">Level 01</span>
-                <h3>The Rain-Swept City</h3>
-                <span class="meta">One week · Shared by six</span>
-              </header>
+              <div class="still-visual">
+                <svg class="still-art" viewBox="0 0 200 200" aria-hidden="true">
+                  <g fill="none" stroke="rgba(154,150,143,.5)" stroke-width="1.4">
+                    <rect x="30" y="30" width="140" height="140" />
+                    <rect x="50" y="50" width="100" height="100" />
+                    <rect x="70" y="70" width="60" height="60" />
+                    <rect x="86" y="86" width="28" height="28" />
+                  </g>
+                  <g stroke="#0d0f14" stroke-width="3.2">
+                    <path d="M92 170h16" /><path d="M50 92v16" /><path d="M92 70h16" />
+                    <path d="M150 92v16" /><path d="M70 108v14" /><path d="M130 82v14" />
+                  </g>
+                  <circle cx="100" cy="100" r="2.6" fill="#C9A86C" />
+                </svg>
 
-              <div class="plate-visual">
-                <svg
-                  viewBox="0 0 640 400"
-                  preserveAspectRatio="xMidYMax slice"
-                  aria-hidden="true"
-                >
-                  <rect width="640" height="400" fill="url(#rainSky)" />
+                <div class="still-pan" data-para="6">
+                  <img
+                    src="/public/assets/img/prep/ariadne-maze.jpg"
+                    alt="Cobb tests Ariadne with a maze"
+                    loading="lazy"
+                    decoding="async"
+                    onerror="this.style.display = 'none'"
+                  />
+                </div>
+                <div class="still-fog" aria-hidden="true"></div>
+              </div>
 
+              <div class="still-text">
+                <header class="still-head">
+                  <span class="lv">Step 01</span>
+                  <span class="meta">Paris</span>
+                  <h3>The Architect</h3>
+                </header>
+
+                <p>
+                  To find his architect, Cobb sets one test: draw a maze nobody
+                  can solve at a glance.
+                </p>
+
+                <div class="still-gauge" aria-hidden="true">
+                  <span class="g"><i class="on"></i><i></i><i></i><i></i></span>
+                  <small>1 / 4</small>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </article>
+
+        <!-- Step 02 · Mombasa -->
+        <article class="still still-even still-2" data-speed="0.02">
+          <div class="still-card" data-reveal style="--d: 0.08s">
+            <div class="still-inner">
+
+              <div class="still-visual">
+                <svg class="still-art" viewBox="0 0 200 200" aria-hidden="true">
+                  <g fill="none" stroke="rgba(154,150,143,.5)" stroke-width="1.4">
+                    <rect x="44" y="84" width="112" height="16" rx="3" />
+                    <rect x="44" y="112" width="112" height="16" rx="3" />
+                    <rect x="44" y="140" width="112" height="16" rx="3" />
+                    <circle cx="58" cy="92" r="5" /><circle cx="58" cy="120" r="5" /><circle cx="58" cy="148" r="5" />
+                  </g>
+                  <path d="M100 30V62" stroke="#C9A86C" stroke-width="1.2" opacity=".8" />
+                  <circle cx="100" cy="68" r="2.8" fill="#C9A86C" />
+                </svg>
+
+                <div class="still-pan" data-para="6">
+                  <img
+                    src="/public/assets/img/prep/yusuf-lab.jpg"
+                    alt="Sleepers in rows in Yusuf's back room in Mombasa"
+                    loading="lazy"
+                    decoding="async"
+                    onerror="this.style.display = 'none'"
+                  />
+                </div>
+                <div class="still-fog" aria-hidden="true"></div>
+              </div>
+
+              <div class="still-text">
+                <header class="still-head">
+                  <span class="lv">Step 02</span>
+                  <span class="meta">Mombasa</span>
+                  <h3>The Chemist</h3>
+                </header>
+
+                <p>
+                  In a back room in Mombasa, strangers sleep in rows — the
+                  sedative that must hold six minds through three levels.
+                </p>
+
+                <div class="still-gauge" aria-hidden="true">
+                  <span class="g"><i class="on"></i><i class="on"></i><i></i><i></i></span>
+                  <small>2 / 4</small>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </article>
+
+        <!-- Step 03 · The plan -->
+        <article class="still still-odd still-3" data-speed="-0.02">
+          <div class="still-card" data-reveal style="--d: 0.08s">
+            <div class="still-inner">
+
+              <div class="still-visual">
+                <svg class="still-art" viewBox="0 0 200 200" aria-hidden="true">
+                  <g stroke="rgba(154,150,143,.5)" stroke-width="1.4">
+                    <path d="M28 70H164" /><path d="M60 100H164" /><path d="M92 130H164" />
+                  </g>
+                  <path d="M164 54V146" stroke="#C9A86C" stroke-width="1.2" />
+                  <g fill="#C9A86C">
+                    <circle cx="164" cy="70" r="2.6" /><circle cx="164" cy="100" r="2.6" /><circle cx="164" cy="130" r="2.6" />
+                  </g>
+                </svg>
+
+                <div class="still-pan" data-para="6">
+                  <img
+                    src="/public/assets/img/prep/the-plan.jpg"
+                    alt="The team going over the plan"
+                    loading="lazy"
+                    decoding="async"
+                    onerror="this.style.display = 'none'"
+                  />
+                </div>
+                <div class="still-fog" aria-hidden="true"></div>
+              </div>
+
+              <div class="still-text">
+                <header class="still-head">
+                  <span class="lv">Step 03</span>
+                  <span class="meta">The plan</span>
+                  <h3>The Kick</h3>
+                </header>
+
+                <p>
+                  Arthur sets the timing: one kick for every level, all of them
+                  landing at once.
+                </p>
+
+                <div class="still-gauge" aria-hidden="true">
+                  <span class="g"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+                  <small>3 / 4</small>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </article>
+
+        <!-- Step 04 · Flight 815 -->
+        <article class="still still-even still-4" data-speed="0.02">
+          <div class="still-card" data-reveal style="--d: 0.08s">
+            <div class="still-inner">
+
+              <div class="still-visual">
+                <svg class="still-art" viewBox="0 0 200 200" aria-hidden="true">
                   <defs>
-                    <linearGradient
-                      id="rainSky"
-                      x1="0"
-                      y1="0"
-                      x2="0"
-                      y2="1"
-                    >
-                      <stop offset="0" stop-color="#23262e" />
+                    <linearGradient id="prepWin" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#2b303b" />
                       <stop offset="1" stop-color="#101218" />
                     </linearGradient>
                   </defs>
-
-                  <g id="skyRain"></g>
+                  <rect x="64" y="36" width="72" height="128" rx="36" fill="url(#prepWin)" stroke="rgba(232,230,225,.28)" stroke-width="1.4" />
+                  <path d="M68 112H132" stroke="rgba(201,168,108,.7)" stroke-width="1" />
+                  <ellipse cx="92" cy="96" rx="14" ry="3" fill="rgba(232,230,225,.12)" />
                 </svg>
 
-                <img
-                  src="/public/assets/img/level1.jpg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  onerror="this.style.display = 'none'"
-                />
-
-                <div class="pv-fog" aria-hidden="true"></div>
+                <div class="still-pan" data-para="6">
+                  <img
+                    src="/public/assets/img/prep/flight-815.jpg"
+                    alt="The team asleep in the first-class cabin of Flight 815"
+                    loading="lazy"
+                    decoding="async"
+                    onerror="this.style.display = 'none'"
+                  />
+                </div>
+                <div class="still-fog" aria-hidden="true"></div>
               </div>
 
-              <p>
-                Yusuf's compound drops the team into a city of perpetual rain,
-                where freight trains cut through intersections and the
-                subconscious hires its own guns.
-              </p>
+              <div class="still-text">
+                <header class="still-head">
+                  <span class="lv">Step 04</span>
+                  <span class="meta">Flight 815</span>
+                  <h3>The Descent Begins</h3>
+                </header>
 
-            </div>
-          </div>
-        </article>
+                <p>
+                  Yusuf starts the sedative and the whole cabin falls asleep —
+                  straight into the rain-swept city.
+                </p>
 
-        <!-- Level 02 -->
-        <article class="plate plate-2" data-speed="0.06">
-          <div class="plate-card" data-reveal style="--d: 0.12s">
-            <div class="plate-inner" data-para="9">
-
-              <header class="plate-head">
-                <span class="lv">Level 02</span>
-                <h3>The Hotel</h3>
-                <span class="meta">Six months · Zero gravity</span>
-              </header>
-
-              <div class="plate-visual">
-                <svg viewBox="0 0 640 400" aria-hidden="true">
-                  <rect width="640" height="400" fill="#101218" />
-
-                  <defs>
-                    <linearGradient
-                      id="doorG2"
-                      x1="0"
-                      y1="0"
-                      x2="0"
-                      y2="1"
-                    >
-                      <stop offset="0" stop-color="#E5C68B" />
-                      <stop offset="1" stop-color="#7d6236" />
-                    </linearGradient>
-
-                    <radialGradient
-                      id="goldG2"
-                      cx=".5"
-                      cy=".5"
-                      r=".5"
-                    >
-                      <stop
-                        offset="0"
-                        stop-color="#C9A86C"
-                        stop-opacity=".65"
-                      />
-                      <stop
-                        offset="1"
-                        stop-color="#C9A86C"
-                        stop-opacity="0"
-                      />
-                    </radialGradient>
-                  </defs>
-                </svg>
-
-                <img
-                  src="/public/assets/img/level2.png"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  onerror="this.style.display = 'none'"
-                />
+                <div class="still-gauge is-ready" aria-hidden="true">
+                  <span class="g"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+                  <small>Ready</small>
+                </div>
               </div>
-
-              <p>
-                Arthur's hotel. Corridors, carpets, a quiet bar — until the
-                physics fails and the hallway itself begins to tumble.
-              </p>
-
-            </div>
-          </div>
-        </article>
-
-        <!-- Level 03 -->
-        <article class="plate plate-3" data-speed="-0.07">
-          <div class="plate-card" data-reveal style="--d: 0.1s">
-            <div class="plate-inner" data-para="8">
-
-              <header class="plate-head">
-                <span class="lv">Level 03</span>
-                <h3>The Snow Fortress</h3>
-                <span class="meta">Ten years · The vault</span>
-              </header>
-
-              <div class="plate-visual">
-                <svg viewBox="0 0 640 400" aria-hidden="true">
-                  <defs>
-                    <linearGradient
-                      id="doorG3"
-                      x1="0"
-                      y1="0"
-                      x2="0"
-                      y2="1"
-                    >
-                      <stop offset="0" stop-color="#E5C68B" />
-                      <stop offset="1" stop-color="#7d6236" />
-                    </linearGradient>
-
-                    <radialGradient
-                      id="goldG3"
-                      cx=".5"
-                      cy=".5"
-                      r=".5"
-                    >
-                      <stop
-                        offset="0"
-                        stop-color="#C9A86C"
-                        stop-opacity=".65"
-                      />
-                      <stop
-                        offset="1"
-                        stop-color="#C9A86C"
-                        stop-opacity="0"
-                      />
-                    </radialGradient>
-                  </defs>
-                </svg>
-
-                <img
-                  src="/public/assets/img/level3.png"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  onerror="this.style.display = 'none'"
-                />
-              </div>
-
-              <p>
-                A fortress hospital carved into the snowfields. Somewhere below
-                the ice, a father's secret waits inside a vault that opens like
-                a safe.
-              </p>
 
             </div>
           </div>

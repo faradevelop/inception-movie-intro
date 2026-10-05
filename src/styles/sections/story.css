@@ -7,7 +7,7 @@
 .story-grid {
   display: grid;
 
-  /* LEFT = levels / RIGHT = story */
+  /* LEFT = preparation / RIGHT = story */
   grid-template-columns:
     minmax(0, 0.82fr)
     minmax(0, 1.05fr);
@@ -18,7 +18,7 @@
 }
 
 /* =========================================================
-   RIGHT · STORY CONTENT
+   RIGHT · STORY CONTENT  (unchanged)
    ========================================================= */
 
 .story-content h2 {
@@ -70,50 +70,85 @@
 }
 
 /* =========================================================
-   LEFT · DREAM LEVELS
+   LEFT · PREPARATION
+   Four compact stills zig-zag down a gold plumb line.
+   The column stretches to the height of the story text and
+   spreads the cards evenly, so nothing is left empty beside
+   the last frame.
    ========================================================= */
 
 .story-levels {
   position: relative;
+  isolation: isolate;
+
+  align-self: stretch;
 
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
-/* ---------- cards ---------- */
+/* plumb line (same motif as the hero) ending in the brand diamond */
+.story-levels::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(201, 168, 108, 0.5) 8%,
+    rgba(201, 168, 108, 0.5) 100%
+  );
+}
 
-.story-levels .plate {
-  width: 100%;
+.story-levels::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  bottom: -3px;
+  width: 5px;
+  height: 5px;
+  margin-left: -2.5px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+/* ---------- placement ----------
+   Tilt uses the `rotate` property so the scroll-parallax
+   (which writes `transform`) never overwrites it.            */
+
+.still {
+  width: 92%;
+  rotate: var(--tilt, 0deg);
   will-change: transform;
 }
 
-.story-levels .plate-1 {
-  transform: rotate(-1.2deg);
-}
+.still-odd  { align-self: flex-start; }
+.still-even { align-self: flex-end; }
 
-.story-levels .plate-2 {
-  margin-top: -0.8rem;
-  transform: rotate(1deg);
-  z-index: 2;
-}
-
-.story-levels .plate-3 {
-  margin-top: -0.8rem;
-  transform: rotate(-0.8deg);
-  z-index: 1;
-}
+.still-1 { --tilt: -0.6deg; }
+.still-2 { --tilt: 0.5deg; }
+.still-3 { --tilt: -0.4deg; }
+.still-4 { --tilt: 0.5deg; }
 
 /* ---------- card ---------- */
 
-.story-levels .plate-card {
+.still-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 1rem;
+
+  padding: clamp(0.8rem, 1.2vw, 1rem);
+
   background: linear-gradient(180deg, #14161d, #101218);
-
   border: 1px solid var(--hair);
-
-  padding: clamp(0.95rem, 1.6vw, 1.4rem);
-
   box-shadow: 0 34px 74px -30px rgba(0, 0, 0, 0.8);
 
   transition:
@@ -122,109 +157,191 @@
     box-shadow 0.6s;
 }
 
-.story-levels .plate:hover .plate-card {
-  transform: translateY(-7px);
-
-  border-color: rgba(201, 168, 108, 0.35);
-
-  box-shadow:
-    0 46px 90px -30px rgba(0, 0, 0, 0.9),
-    0 0 40px -18px rgba(201, 168, 108, 0.35);
+/* image swaps sides on every other card */
+.still-even .still-visual {
+  order: 2;
 }
 
-/* ---------- header ---------- */
+/* ---------- still ---------- */
 
-.story-levels .plate-head {
-  display: flex;
-  align-items: baseline;
-
-  gap: 1rem;
-
-  margin-bottom: 0.95rem;
-
-  flex-wrap: wrap;
-}
-
-.story-levels .lv {
-  font: 500 0.6rem/1 var(--sans);
-
-  letter-spacing: 0.34em;
-  color: var(--gold);
-}
-
-.story-levels .plate-head h3 {
-  font: 500 clamp(1.25rem, 2.3vw, 1.75rem)/1.1 var(--serif);
-}
-
-.story-levels .plate-head .meta {
-  margin-left: auto;
-
-  font: 400 0.56rem/1.4 var(--sans);
-
-  letter-spacing: 0.26em;
-  color: var(--muted);
-
-  text-transform: uppercase;
-}
-
-/* ---------- visual ---------- */
-
-.story-levels .plate-visual {
+.still-visual {
   position: relative;
-
-  aspect-ratio: 16/10;
-
+  min-height: 170px;
   overflow: hidden;
 
   background: #0d0f14;
-
   border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-.story-levels .plate-visual svg,
-.story-levels .plate-visual img {
+.still-art {
   position: absolute;
-
   inset: 0;
-
   width: 100%;
   height: 100%;
-
-  object-fit: cover;
 }
 
-/* ---------- fog ---------- */
-
-.story-levels .pv-fog {
+/* oversized so the pointer parallax never reveals an edge */
+.still-pan {
   position: absolute;
+  inset: -8px;
+  will-change: transform;
+}
 
+.still-pan img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  filter: grayscale(0.6) brightness(0.78) contrast(1.08);
+  transform: scale(1.001);
+
+  transition:
+    transform 1.4s var(--ease),
+    filter 0.8s var(--ease);
+}
+
+.still-fog {
+  position: absolute;
   inset: 0;
+  pointer-events: none;
 
   background: linear-gradient(
     180deg,
-    rgba(13, 15, 20, 0.25),
-    transparent 35%,
-    transparent 60%,
-    rgba(11, 12, 15, 0.72)
+    rgba(13, 15, 20, 0.2),
+    transparent 40%,
+    rgba(11, 12, 15, 0.7)
   );
-
-  pointer-events: none;
 }
 
-/* ---------- body ---------- */
+/* cinematic corner marks (same device as the descent frames) */
+.still-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0.5rem;
+  z-index: 2;
+  pointer-events: none;
 
-.story-levels .plate > .plate-card > p {
-  margin-top: 1.05rem;
+  border: 1px solid rgba(201, 168, 108, 0.3);
 
-  font: 300 0.93rem/1.8 var(--sans);
+  -webkit-mask:
+    linear-gradient(#000 0 0) top left / 12px 12px no-repeat,
+    linear-gradient(#000 0 0) top right / 12px 12px no-repeat,
+    linear-gradient(#000 0 0) bottom left / 12px 12px no-repeat,
+    linear-gradient(#000 0 0) bottom right / 12px 12px no-repeat;
+  mask:
+    linear-gradient(#000 0 0) top left / 12px 12px no-repeat,
+    linear-gradient(#000 0 0) top right / 12px 12px no-repeat,
+    linear-gradient(#000 0 0) bottom left / 12px 12px no-repeat,
+    linear-gradient(#000 0 0) bottom right / 12px 12px no-repeat;
+}
 
+/* ---------- text ---------- */
+
+.still-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.still-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 0.5rem 0.8rem;
+}
+
+.still-head .lv {
+  font: 500 0.56rem/1 var(--sans);
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.still-head .meta {
+  font: 400 0.5rem/1 var(--sans);
+  letter-spacing: 0.24em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.still-head h3 {
+  grid-column: 1 / -1;
+  font: 500 clamp(1.15rem, 1.7vw, 1.4rem) / 1.15 var(--serif);
+}
+
+.still-text > p {
+  margin-top: 0.75rem;
+
+  font: 300 0.84rem/1.7 var(--sans);
   color: var(--body);
+}
 
-  max-width: 54ch;
+/* readiness gauge — fills as the frame surfaces; full = ready to descend */
+.still-gauge {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  margin-top: auto;
+  padding-top: 0.9rem;
+}
+
+.still-gauge .g {
+  display: flex;
+  gap: 4px;
+}
+
+.still-gauge i {
+  width: 16px;
+  height: 2px;
+  background: rgba(232, 230, 225, 0.2);
+
+  transition:
+    background 0.6s,
+    box-shadow 0.6s;
+}
+
+.in .still-gauge i.on {
+  background: var(--gold);
+  box-shadow: 0 0 8px rgba(201, 168, 108, 0.6);
+}
+
+.in .still-gauge i.on:nth-child(2) { transition-delay: 0.2s; }
+.in .still-gauge i.on:nth-child(3) { transition-delay: 0.4s; }
+.in .still-gauge i.on:nth-child(4) { transition-delay: 0.6s; }
+
+.still-gauge small {
+  font: 400 0.46rem/1 var(--sans);
+  letter-spacing: 0.3em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.still-gauge.is-ready small {
+  color: var(--gold);
+}
+
+/* ---------- hover ---------- */
+
+@media (hover: hover) and (pointer: fine) {
+  .still-inner:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(201, 168, 108, 0.35);
+
+    box-shadow:
+      0 46px 90px -30px rgba(0, 0, 0, 0.9),
+      0 0 40px -18px rgba(201, 168, 108, 0.35);
+  }
+
+  .still-inner:hover .still-pan img {
+    transform: scale(1.06);
+    filter: grayscale(0.1) brightness(0.92) contrast(1.05);
+  }
 }
 
 /* =========================================================
-   MOBILE
+   RESPONSIVE
    ========================================================= */
 
 @media (max-width: 800px) {
@@ -232,137 +349,56 @@
     grid-template-columns: 1fr;
     gap: clamp(4rem, 10vw, 6rem);
   }
+}
 
+/* single column: no stretching, cards keep a readable width */
+@media (max-width: 960px) {
+  .still {
+    max-width: 560px;
+  }
+}
+
+/* phones: image on top, text below */
+@media (max-width: 600px) {
   .story-levels {
     gap: 1.25rem;
   }
 
-  .story-levels .plate-1,
-  .story-levels .plate-2,
-  .story-levels .plate-3 {
-    margin-top: 0;
+  .story-levels::before,
+  .story-levels::after {
+    display: none;
   }
 
-  .story-levels .plate-1 {
-    transform: rotate(-0.8deg);
-  }
-
-  .story-levels .plate-2 {
-    transform: rotate(0.8deg);
-  }
-
-  .story-levels .plate-3 {
-    transform: rotate(-0.6deg);
-  }
-}
-
-@media (max-width: 520px) {
-  .story-levels {
-    gap: 1rem;
-  }
-
-  .story-levels .plate-card {
-    padding: 0.9rem;
-  }
-
-  .story-levels .plate-head {
-    gap: 0.65rem;
-  }
-
-  .story-levels .plate-head h3 {
+  .still {
     width: 100%;
-  }
-
-  .story-levels .plate-head .meta {
-    margin-left: 0;
-
-    width: 100%;
-
-    font-size: 0.5rem;
-    letter-spacing: 0.2em;
-  }
-
-  .story-levels .plate > .plate-card > p {
-    font-size: 0.88rem;
-    line-height: 1.75;
-  }
-}
-
-/* ---------- compact dream level cards ---------- */
-
-.story-levels {
-  gap: 1rem;
-}
-
-.story-levels .plate {
-  width: 78%;
-}
-
-.story-levels .plate-card {
-  padding: .7rem;
-}
-
-.story-levels .plate-head {
-  gap: .55rem;
-  margin-bottom: .6rem;
-}
-
-.story-levels .lv {
-  font-size: .5rem;
-}
-
-.story-levels .plate-head h3 {
-  font-size: 1.15rem;
-}
-
-.story-levels .plate-head .meta {
-  font-size: .45rem;
-  letter-spacing: .18em;
-}
-
-.story-levels .plate-visual {
-  aspect-ratio: 16 / 8;
-}
-
-.story-levels .plate > .plate-card > p {
-  margin-top: .65rem;
-  font-size: .72rem;
-  line-height: 1.55;
-}
-
-
-/* ---------- stagger ---------- */
-
-.story-levels .plate-1 {
-  align-self: flex-start;
-}
-
-.story-levels .plate-2 {
-  align-self: flex-end;
-  margin-top: -1.2rem;
-}
-
-.story-levels .plate-3 {
-  align-self: center;
-  margin-top: -1.2rem;
-}
-
-
-/* ---------- mobile ---------- */
-
-@media (max-width: 800px) {
-  .story-levels .plate {
-    width: 100%;
-  }
-
-  .story-levels .plate-1,
-  .story-levels .plate-2,
-  .story-levels .plate-3 {
+    max-width: none;
     align-self: stretch;
-    margin-top: 0;
   }
 
-  .story-levels .plate-visual {
+  .still-inner {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .still-visual,
+  .still-even .still-visual {
+    order: 0;
+    min-height: 0;
     aspect-ratio: 16 / 9;
+  }
+
+  .still-text > p {
+    font-size: 0.86rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .still {
+    rotate: 0deg;
+  }
+
+  .still-inner,
+  .still-pan img {
+    transition: none;
   }
 }
