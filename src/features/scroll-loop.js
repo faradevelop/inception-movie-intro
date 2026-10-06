@@ -9,7 +9,7 @@ export function initScrollLoop(){
      (load / resize / 900ms timer) would bake the offset into `top` and the cards drift. */
   const speedEls = $$('[data-speed]').map(function(el){ return {el:el, s:parseFloat(el.dataset.speed)||0, top:0, h:1, y:0}; });
   const paraEls  = $$('[data-para]').map(function(el){ return {el:el, f:parseFloat(el.dataset.para)||0}; });
-  const sections = ['reality','film','story','trailer','layers','architecture','cast','totem','limbo','finale'].map(function(id){ return {id:id, el:$('#'+id), top:0, h:1}; });
+  const sections = ['reality','film','story','trailer','layers','architecture','cast','totem','finale'].map(function(id){ return {id:id, el:$('#'+id), top:0, h:1}; });
   const archSec  = $('#archScroll');
   const foldWrap = $('#foldWrap'), foldDeg = $('#foldDeg'), archCopy = $('#archCopy');
   const archTitle = $('#archTitle'), archEcho = $('#archEcho');
