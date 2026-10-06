@@ -26,7 +26,7 @@
 }
 
 .pullquote {
-  margin-top: clamp(3.4rem, 7vh, 5.4rem);
+  margin-top: clamp(6rem, 12vh, 10rem);
   padding-left: 2rem;
   border-left: 1px solid var(--gold);
   max-width: 26em;
@@ -51,7 +51,7 @@
 }
 
 .loc {
-  margin-top: clamp(3.4rem, 7vh, 5.4rem);
+  margin-top: clamp(6rem, 12vh, 10rem);
 
   display: flex;
   flex-wrap: wrap;
@@ -130,13 +130,25 @@
   will-change: transform;
 }
 
-.still-odd  { align-self: flex-start; }
-.still-even { align-self: flex-end; }
+.still-odd {
+  align-self: flex-start;
+}
+.still-even {
+  align-self: flex-end;
+}
 
-.still-1 { --tilt: -0.6deg; }
-.still-2 { --tilt: 0.5deg; }
-.still-3 { --tilt: -0.4deg; }
-.still-4 { --tilt: 0.5deg; }
+.still-1 {
+  --tilt: -0.6deg;
+}
+.still-2 {
+  --tilt: 0.5deg;
+}
+.still-3 {
+  --tilt: -0.4deg;
+}
+.still-4 {
+  --tilt: 0.5deg;
+}
 
 /* ---------- card ---------- */
 
@@ -306,9 +318,15 @@
   box-shadow: 0 0 8px rgba(201, 168, 108, 0.6);
 }
 
-.in .still-gauge i.on:nth-child(2) { transition-delay: 0.2s; }
-.in .still-gauge i.on:nth-child(3) { transition-delay: 0.4s; }
-.in .still-gauge i.on:nth-child(4) { transition-delay: 0.6s; }
+.in .still-gauge i.on:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.in .still-gauge i.on:nth-child(3) {
+  transition-delay: 0.4s;
+}
+.in .still-gauge i.on:nth-child(4) {
+  transition-delay: 0.6s;
+}
 
 .still-gauge small {
   font: 400 0.46rem/1 var(--sans);

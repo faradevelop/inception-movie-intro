@@ -1,7 +1,7 @@
 /* ---------- film dossier ---------- */
 
 #film {
-  --film-ratio: 3 / 4; /* change to 16 / 10 etc. if your banner is wide */
+  --film-ratio: 2/ 2.9; /* change to 16 / 10 etc. if your banner is wide */
   padding: clamp(64px, 10vh, 110px) 0;
   background: var(--bg);
   border-top: 1px solid var(--hair);
@@ -39,6 +39,8 @@
 
 .film-title em {
   display: block;
+  font: 400 clamp(1.2rem, 2vw, 3rem) / 0.95 var(--serif);
+  letter-spacing: 0.02em;
   color: var(--muted);
   font-style: italic;
 }
@@ -168,7 +170,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center top;
   transform: scale(1);
   transition: transform 1.6s var(--ease);
@@ -226,7 +228,7 @@
 .film-intro-corner {
   position: absolute;
   right: -15px;
-  bottom: 2.9rem;
+  bottom: 1.2rem;
   width: 110px;
   height: 110px;
   border-right: 1px solid rgba(201, 168, 108, 0.55);
