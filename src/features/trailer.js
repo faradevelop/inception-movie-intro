@@ -1,24 +1,40 @@
 import { $ } from '../utils/dom.js';
 
-/* Assets live in /public → served from the site root (dev) and copied to dist (build).
-   JS-created URLs are not rewritten by Vite, so normalise them against BASE_URL. */
-const asset = (p) => p ? import.meta.env.BASE_URL + p.replace(/^\/?(?:public\/)?/, '') : p;
+function withAutoplay(url){
+  try {
+    const u = new URL(url, window.location.href);
+    u.searchParams.set('autoplay', '1');
+    u.searchParams.set('rel', '0');
+    u.searchParams.set('modestbranding', '1');
+    u.searchParams.set('playsinline', '1');
+    return u.toString();
+  } catch (e) {
+    return url;
+  }
+}
 
 export function initTrailer(){
-  /* ---------- trailer ---------- */
+  /* ---------- trailer (iframe) ---------- */
   const f = $('#trailerFrame'), b = $('#trailerBtn'), l = $('#trailerLabel');
   if (!f || !b || !l) return;
 
   b.addEventListener('click', function(){
-    const src = asset(f.dataset.video);
-    if (!src){
-      l.textContent = 'Trailer file not attached yet';
+    const embed = f.dataset.embed;
+    if (!embed){
+      l.textContent = 'Trailer link not attached yet';
       setTimeout(function(){ l.textContent = 'Play trailer'; }, 2600);
       return;
     }
-    const v = document.createElement('video');
-    v.src = src; v.controls = true; v.autoplay = true; v.playsInline = true;
-    if (f.dataset.poster) v.poster = asset(f.dataset.poster);
-    f.appendChild(v); f.classList.add('playing');
+
+    const ifr = document.createElement('iframe');
+    ifr.src = withAutoplay(embed);
+    ifr.title = f.dataset.title || 'Trailer';
+    ifr.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    ifr.allowFullscreen = true;
+    ifr.referrerPolicy = 'strict-origin-when-cross-origin';
+    ifr.loading = 'lazy';
+
+    f.appendChild(ifr);
+    f.classList.add('playing');
   });
 }

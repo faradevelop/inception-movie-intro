@@ -18,12 +18,21 @@
   background: var(--panel);
 }
 .trailer-frame img,
-.trailer-frame video {
+.trailer-frame video,
+.trailer-frame iframe {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+}
+.trailer-frame img,
+.trailer-frame video {
   object-fit: cover;
+}
+.trailer-frame iframe {
+  z-index: 3;
+  border: 0;
+  background: #000;
 }
 .trailer-frame img {
   transform: scale(1.07);
