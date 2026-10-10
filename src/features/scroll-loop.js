@@ -1,5 +1,4 @@
 import { $, $$, clamp, RM, FINE } from '../utils/dom.js';
-import { updateAmbient } from './audio.js';
 
 export function initScrollLoop(){
   /* ---------- cached layout metrics ---------- */
@@ -47,8 +46,6 @@ export function initScrollLoop(){
     bar.style.transform = 'scaleX(' + progress.toFixed(4) + ')';
     nav.classList.toggle('scrolled', sy > 40);
 
-    updateAmbient(progress);
-
     /* active section → rail */
     let active = 0;
     for (let i=0;i<sections.length;i++){
@@ -91,10 +88,4 @@ export function initScrollLoop(){
   }
   requestAnimationFrame(loop);
 
-  /* limbo ghost slow drift */
-  if (!RM){
-    const ghost = $('#limboGhost');
-    let gt = 0;
-    setInterval(function(){ gt += .16; ghost.style.marginTop = (Math.sin(gt)*10).toFixed(1)+'px'; }, 90);
-  }
 }
