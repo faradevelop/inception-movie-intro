@@ -21,6 +21,6 @@ const htmlInclude = () => ({
 });
 
 export default defineConfig({
-  base: './',
+  base: '/projects/inception',
   plugins: [htmlInclude()],
 });
